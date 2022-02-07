@@ -1,12 +1,24 @@
+
 @use "./assets/sass/_variables.scss" as *;
 
-.app {
-  color: $color-black;
-}
-
 @media screen and (min-width: 992px) {
-  .app {
+  .App {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
   }
 }
+
+// .app {
+//   color: $color-black;
+// }
+
+// @media screen and (min-width: 992px) {
+//   .app {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//   }
+// }

@@ -1,60 +1,78 @@
-import "./App.scss";
+import './App.scss';
+import Header from './components/Header/Header'
+// import "./App.scss";
 
-import Nav from "./components/Nav/Nav";
-import Home from "./containers/Home/Home";
-import AlbumGallery from "./containers/AlbumGallery/AlbumGallery";
-import AlbumInfo from "./containers/AlbumInfo/AlbumInfo";
+// import Nav from "./components/Nav/Nav";
+// import Home from "./containers/Home/Home";
+// import AlbumGallery from "./containers/AlbumGallery/AlbumGallery";
+// import AlbumInfo from "./containers/AlbumInfo/AlbumInfo";
 
-import albums from "./data/albums";
-import artist from "./data/artist";
-import { useState } from "react";
+// import albums from "./data/albums";
+// import artist from "./data/artist";
+// import { useState } from "react";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 const App = () => {
-  const [user, setUser] = useState({
-    firstName: "John",
-    lastName: "Doe",
-  });
+// let message = "We can do JS here!";
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    let firstName = event.target[0].value;
-    let lastName = event.target[1].value;
+// if (message.length > 10) {
+//   message += " , we add logic here as well!"
+// }
 
-    if (firstName && lastName) {
-      event.target.reset();
-      setUser({ firstName, lastName });
-    }
-  };
+// const App = () => {
+//   const [user, setUser] = useState({
+//     firstName: "John",
+//     lastName: "Doe",
+//   });
 
-  const filteredAlbums = albums.filter(album => album.strAlbumThumb);
+//   const handleSubmit = event => {
+//     event.preventDefault();
+//     let firstName = event.target[0].value;
+//     let lastName = event.target[1].value;
 
-  const highestRating = albums.filter(album => album.intScore).sort((a, b) => b.intScore - a.intScore);
+//     if (firstName && lastName) {
+//       event.target.reset();
+//       setUser({ firstName, lastName });
+//     }
+//   };
 
-  return (
-    <Router>
-      <div className="app">
-        <Nav userName={`${user.firstName} ${user.lastName}`} handleSubmit={handleSubmit} />
+//   const filteredAlbums = albums.filter(album => album.strAlbumThumb);
 
-        <Routes>
-          <Route
-            path="/"
-            element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
-          />
-          <Route
-            path="/albums"
-            element={<AlbumGallery key="albums" albumsArr={filteredAlbums} title={"All Albums"} />}
-          />
-          <Route path="/album/:albumId" element={<AlbumInfo albumsArr={filteredAlbums} />} />
-          <Route
-            path="/albums/rated"
-            element={<AlbumGallery key="rated" albumsArr={highestRating} title={"Rated Albums"} />}
-          />
-        </Routes>
-      </div>
-    </Router>
-  );
-};
+//   const highestRating = albums.filter(album => album.intScore).sort((a, b) => b.intScore - a.intScore);
+
+//   return (
+//     <Router>
+//       <div className="app">
+//         <Nav userName={`${user.firstName} ${user.lastName}`} handleSubmit={handleSubmit} />
+
+//         <Routes>
+//           <Route
+//             path="/"
+//             element={<Home user={user} unsortedAlbums={filteredAlbums} sortedAlbums={highestRating} artist={artist} />}
+//           />
+//           <Route
+//             path="/albums"
+//             element={<AlbumGallery key="albums" albumsArr={filteredAlbums} title={"All Albums"} />}
+//           />
+//           <Route path="/album/:albumId" element={<AlbumInfo albumsArr={filteredAlbums} />} />
+//           <Route
+//             path="/albums/rated"
+//             element={<AlbumGallery key="rated" albumsArr={highestRating} title={"Rated Albums"} />}
+//           />
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// };
+
+
+return (
+  <div className="App">
+    <Header />
+  </div>
+)
+}
 
 export default App;
