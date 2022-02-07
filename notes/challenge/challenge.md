@@ -4,30 +4,21 @@ In VS Code right click on the challenge.md file and click "Open Preview".
 
 ## Brief
 
-The aims of this challenge are for you to practice inserting JS into JSX and to conditionally render content on the page.
+The aim of this challenge is to create two button components as shown in the image below, style them and then render them in our App.jsx.
+
+<img src="./images/components-challenge.png" width="300"/>
 
 ---
 
-### Adding JS into JSX
+## Todo
 
-1. In App.jsx create a user object. This represents a user of our app. It should have two keys firstName and lastName. You can set them to any string you like.
+1. Create two buttons components called ButtonExplore and ButtonLetsGo. You will need to create a folder, jsx and scss file for each of the buttons.
 
-2. In App.jsx use the values from the user object in your jsx. Add a message greeting the user using the firstName and lastName values from the user object.
+2. When you have created the files you will need to write the JSX and style the components.
 
-The finished result should look like this:
+- ButtonLetsGo should have a background color the same as the `$color-secondary;` variable from our \_variables.scss file.
+- ButtonExplore should have a border the same color as our `$color-primary;` variable from our \_variables.scss file.
 
-<img src="./images/adding-js-jsx.PNG" alt="greeting example" width="200" height="200"/>
+3. You need to Import your buttons and render them in App.jsx. Can you get them side by side? Flexbox? Grid?
 
-### Conditionally Render content
-
-1. In App.jsx based on the time variable alter the message to correctly greet the user.
-
-   - If it is the morning the message should say "Good Morning!"
-   - If it is the afternoon the message should say "Good Afternoon!"
-   - If it is the evening the message should say "Good Evening!"
-
-The finished result should look like one of these depending on the time:
-
-  <img src="./images/conditional-sunrise.PNG" alt="sunrise example" width="200" height="200"/>
-  <img src="./images/conditional-sun.PNG" alt="sun example" width="200" height="200"/>
-  <img src="./images/conditional-moon.PNG" alt="moon example" width="200" height="200"/>
+4. **EXTENSION** Can you hide them for devices over 992px?

@@ -1,15 +1,20 @@
 # Set up and JSX
 
-This branch is focused on getting the student use to the structure of a React project and confident using JSX.
+This branch is focused on getting the student use to creating, styling, exporting and importing Components.
 
 ### Resources
 
-- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7B22314840-16F5-45D8-892B-21236DD2D689%7D&file=React%20Introduction.pptx&action=edit&mobileredirect=true)
-- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/01-setup-and-jsx/notes/plan.md)
+- [Slides](https://opusrs.sharepoint.com/:p:/r/sites/Nologyio/_layouts/15/Doc.aspx?sourcedoc=%7B318F1076-070A-48E0-BCC1-D2E090406885%7D&file=02%20React%20Components.pptx&action=edit&mobileredirect=true)
+- [Github plan.md](https://github.com/nology-tech/react-code-along/blob/02-components/notes/plan.md)
 - [Component Tree](./component-tree.md)
-- [Images for Codealong](https://opusrs.sharepoint.com/:f:/s/Nologyio/En2N-F7hDwVJlkshZ_PAAtUBFx-7af4Fttuf3ZpTM-uhhQ?e=nMiUht)
 
-### Objectives
+## Objectives
+
+### Resources
+
+## How to set up a Component - Create a Nav Component
+
+Create a components folder
 
 - How to set up a React Project?
 - What is the Project Structure with React?
@@ -29,6 +34,8 @@ npm install
 git checkout 01-setup-and-jsx
 ```
 
+The naming convention for Components is that the component starts with a capital letter e.g. Nav
+
 We are working with a project created with [create-react-app](https://github.com/facebook/create-react-app). This is a quick way creating a React project. When we use create-react-app to build a project we do have to delete and remove some generated code.
 
 Delete the following:
@@ -47,17 +54,21 @@ Remove the Boilerplate html tags below from public/index.html.
 <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 ```
 
+We now need to create the file that our JSX will be written in
+
 You can also update the title and description meta tag.
 
 ```html
 <title>Ear Worm</title> <meta name="description" content="Web site created to learn react concepts" />
 ```
 
-Change the App.js to App.jsx and add in the code below.
+Import React into Nav.jsx and create the functional component
 
 ```jsx
-// App.jsx
-import "./App.css";
+// Nav.jsx
+import React from react
+
+const Nav = () => {
 
 const App = () => {
   return (
@@ -128,103 +139,128 @@ Change the App.css to App.scss, delete the boiler plate and add in the code belo
     }
   }
 }
+```
 
-@media screen and (min-width: 992px) {
-  .app {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 50px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, min-content);
+Demo writing JSX in Nav.jsx
 
-    .greeting {
-      text-align: left;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+```jsx
+// Nav.jsx
+import React from "react";
 
-      &__img {
-        height: 100px;
-      }
-    }
-  }
-}
+const Nav = () => {
+  return <p>This is a Nav Component</p>;
+};
 ```
 
 </details>
 
----
+Export the Nav component and import it into App.jsx.
 
-## JSX
+Render the component in App.jsx and show the component on the webpage.
 
-### Topics
-
-- Why is the app a function?
-- Where What is the JSX?
-- Where do we write JS?
-- How can we use our Assets?
-- Conditional Render items?
-
-Demo JS and JSX, whatever you like below is just a example.
+<details> 
+<summary>Completed App.jsx</summary>
 
 ```jsx
 // App.jsx
-const App = () => {
-  let message = "We can do JS here";
+import "./App.scss";
+import sunrise from "./assets/images/sunrise.png";
+import sun from "./assets/images/sun.png";
+import moon from "./assets/images/moon.png";
+import Nav from "./components/Nav";
 
-  if (message.length > 10) {
-    message += " , we add logic here as well.";
+const App = () => {
+  const user = {
+    firstName: "John",
+    lastName: "Doe",
+  };
+
+  const currentHour = new Date().getHours();
+  let greetingImg = sunrise;
+  let greetingTime = "Morning!";
+
+  if (currentHour >= 12) {
+    greetingImg = sun;
+    greetingTime = "Afternoon!";
+  }
+
+  if (currentHour >= 18) {
+    greetingImg = moon;
+    greetingTime = "Evening!";
   }
 
   return (
     <>
       <div className="app">
+        <Nav />
         <header className="greeting">
-          <h1 className="greeting__heading">Hello World</h1>
-          <p>{message}</p>
-          <p>{500 * 50}</p>
+          <img src={greetingImg} className="greeting__img" alt={greetingTime} />
+          <h1 className="greeting__heading">
+            Good {greetingTime} <br /> {user.firstName} {user.lastName}
+          </h1>
         </header>
       </div>
     </>
   );
 };
-
-export default App;
 ```
 
-Move on to importing the Assets and conditionally showing them. You can use `Date().getHours()` to get the current hour. Depending on the hour you can set it to a different image. To test the logic you can just set it to any number between 0 and 23.
+</details>
+
+<br/>
+
+Write the code for the nav in Nav.jsx
+The images for the nav can be found in src/assets/images
 
 ```jsx
-import "./App.scss";
-import sunrise from "./assets/images/sunrise.png";
-import sun from "./assets/images/sun.png";
-import moon from "./assets/images/moon.png";
+// Nav.jsx
+import React from "react";
+import menu from "../../assets/images/menu-icon.png";
+import settings from "../../assets/images/settings-icon.png";
+import "./Nav.scss";
 
-const App = () => {
-  const currentHour = new Date().getHours();
-  let greetingImg = sunrise;
-
-  if (currentHour > 12) {
-    greetingImg = sun;
-  }
-
-  if (currentHour > 18) {
-    greetingImg = moon;
-  }
-
+const Nav = () => {
   return (
-    <div className="app">
-      <header className="greeting">
-        <img src={greetingImg} alt="Current time icon" className="greeting__img" />
-        <h1 className="greeting__heading">Hello World</h1>
-      </header>
-    </div>
+    <nav className="nav">
+      <img src={menu} className="nav__item" alt="menu icon" />
+      <h2 className="nav__heading">Ear Worm</h2>
+      <img src={settings} className="nav__item" alt="settings icon" />
+    </nav>
   );
 };
 
-export default App;
+export default Nav;
 ```
+
+Create Nav.scss and style the component using the below styles
+
+<details>
+<summary>Completed SCSS styles</summary>
+
+```scss
+// Nav.scss
+@use "../../assets/sass/_variables.scss" as *;
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  color: $color-black;
+
+  &__item {
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .nav {
+    grid-column: 1 / -1;
+  }
+}
+```
+
+</details>
 
 ---
 
