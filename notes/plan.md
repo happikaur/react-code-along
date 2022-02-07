@@ -1,4 +1,4 @@
-# Components
+# Set up and JSX
 
 This branch is focused on getting the student use to creating, styling, exporting and importing Components.
 
@@ -10,36 +10,56 @@ This branch is focused on getting the student use to creating, styling, exportin
 
 ## Objectives
 
-- What is a Component?
-- How do Components fit into our project structure?
-- How do we render Components?
+### Resources
 
 ## How to set up a Component - Create a Nav Component
 
 Create a components folder
 
-src/components
+- How to set up a React Project?
+- What is the Project Structure with React?
+- What is JSX?
+- How do we conditionally show JSX?
+
+---
+
+## How to set up a React Project?
+
+Clone down the repo and install its dependencies.
 
 ```bash
-cd src && mkdir components
+git clone https://github.com/nology-tech/react-code-along.git
+cd react-code-along
+npm install
+git checkout 01-setup-and-jsx
 ```
 
 The naming convention for Components is that the component starts with a capital letter e.g. Nav
 
-Create a Nav folder within the components folder
+We are working with a project created with [create-react-app](https://github.com/facebook/create-react-app). This is a quick way creating a React project. When we use create-react-app to build a project we do have to delete and remove some generated code.
 
-src/components/Nav
+Delete the following:
 
-```bash
-cd components && mkdir Nav
+- public/favicon.ico
+- public/logo192.png
+- public/logo512.png
+- logo.svg
+- yarn.lock
+
+Remove the Boilerplate html tags below from public/index.html.
+
+```html
+<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 ```
 
 We now need to create the file that our JSX will be written in
 
-src/components/Nav/Nav.jsx
+You can also update the title and description meta tag.
 
-```bash
-cd Nav && touch Nav.jsx
+```html
+<title>Ear Worm</title> <meta name="description" content="Web site created to learn react concepts" />
 ```
 
 Import React into Nav.jsx and create the functional component
@@ -50,9 +70,74 @@ import React from react
 
 const Nav = () => {
 
+const App = () => {
   return (
+    <div className="app">
+      <header className="greeting">
+        <h1 className="greeting__heading">Hello World</h1>
+      </header>
+    </div>
+  );
+};
 
-  )
+export default App;
+```
+
+---
+
+## What is the Project Structure with React?
+
+### Topics
+
+- How do we add a packages?
+- What is the public folder?
+- What is the src folder?
+- How do we add Assets?
+
+Add sass to the project.
+
+```bash
+npm install sass ---save-dev
+```
+
+Create an assets folder in src.
+In the assets make two new folders sass, images.
+
+In the images folder add in the 3 images.
+
+[Images](https://opusrs.sharepoint.com/:f:/s/Nologyio/En2N-F7hDwVJlkshZ_PAAtUBFx-7af4Fttuf3ZpTM-uhhQ?e=nMiUht)
+
+Create a \_variables.scss in the SASS folder. Add in some basic variables
+
+```scss
+// _variables.scss
+$color-black: #2d3436;
+$color-white: #ffffff;
+$color-primary: #5dadb0;
+$color-secondary: #fdcb6e;
+```
+
+Change the App.css to App.scss, delete the boiler plate and add in the code below.
+
+<details>
+<summary>Completed App.scss</summary>
+
+```scss
+// App.scss
+@use "./assets/sass/_variables.scss" as *;
+
+.app {
+  .greeting {
+    text-align: center;
+
+    &__heading {
+      color: $color-black;
+    }
+
+    & > * {
+      margin: 20px;
+    }
+  }
 }
 ```
 
@@ -67,7 +152,7 @@ const Nav = () => {
 };
 ```
 
-Explain that we need to export components and import them to the file where we would like to render them
+</details>
 
 Export the Nav component and import it into App.jsx.
 

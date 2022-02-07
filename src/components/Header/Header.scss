@@ -1,0 +1,34 @@
+.greeting {
+  text-align: center;
+}
+
+&__heading {
+  color: #2d3436;
+}
+
+& > * {
+  margin: 20px;
+}
+
+.font {
+  font-size: 25px;
+}
+
+.size {
+  padding-top: 30px;
+  font-size: 25px;
+}
+
+@media screen and (min-width: 992px) {
+  
+    .greeting {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__img {
+        height: 100px;
+      }
+    }
+}

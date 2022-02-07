@@ -1,4 +1,4 @@
-# Challenge: Components
+# Challenge: Set up and JSX
 
 In VS Code right click on the challenge.md file and click "Open Preview".
 

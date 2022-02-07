@@ -1,5 +1,7 @@
 # Solution: Components
 
+In VS Code right click on the solution.md file and click Open Preview.
+
 **Resist the urge the to look in these files if you can't come up with a solution yourself.**
 
 It's always better to google, ask a fellow student or ask a coach. This is one way of solving the challenge not the only way to do it.
@@ -89,6 +91,7 @@ import ButtonExplore from "./components/ButtonExplore";
 2. Render your two components within a section tag
 
 ```jsx
+// App.jsx
 import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
