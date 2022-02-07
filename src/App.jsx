@@ -2,10 +2,11 @@ import "./App.scss";
 import sunrise from "./assets/images/sunrise.png";
 import sun from "./assets/images/sun.png";
 import moon from "./assets/images/moon.png";
+import Nav from'./components/Nav/Nav';
 
 const App = () => {
   const user = {
-    firstName: "John",
+    firstName: "nJohn",
     lastName: "Doe",
   };
 
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <Nav />
       <header className="greeting">
         <img src={greetingImg} alt={greetingTime} className="greeting__img" />
         <h1 className="greeting__heading">
